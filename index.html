@@ -94,6 +94,21 @@
       color: var(--grey-900);
     }
 
+    .job-code-badge {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #fff8eb 0%, var(--primary-soft) 100%);
+      border: 1px solid #f1d9ad;
+      color: var(--grey-900);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      box-shadow: 0 4px 12px rgba(184, 121, 31, 0.10);
+    }
+
     .hero h1 {
       font-size: clamp(28px, 4vw, 40px);
       line-height: 1.15;
@@ -270,14 +285,26 @@
 
     .success-msg {
       display: none;
-      margin-bottom: 18px;
-      padding: 14px 16px;
-      border-radius: 10px;
-      background: var(--success-bg);
-      border: 1px solid var(--success-border);
-      color: var(--success-text);
-      font-size: 14px;
+      margin-bottom: 24px;
+      padding: 24px 28px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #fff8eb 0%, #eefbf2 100%);
+      border: 2px solid var(--primary);
+      color: var(--grey-900);
+      font-size: 22px;
+      line-height: 1.45;
+      font-weight: 800;
+      text-align: center;
+      box-shadow: 0 12px 28px rgba(82, 90, 97, 0.14);
+    }
+
+    .success-msg small {
+      display: block;
+      margin-top: 8px;
+      font-size: 16px;
+      line-height: 1.5;
       font-weight: 600;
+      color: var(--grey-800);
     }
 
     fieldset {
@@ -533,6 +560,7 @@
         <img src="Logo.jpeg" alt="AVVSJ Engineers Ltd Logo" />
         <div class="brand-name">AVVSJ Engineers Ltd</div>
       </div>
+      <div class="job-code-badge">Job Code: SE0526</div>
       <h1>Freelance Site Engineer / Setting Out Engineer</h1>
       <p>
         We are currently supplying Site Engineers to active UK projects and are seeking experienced freelance engineers for immediate and upcoming assignments.
@@ -603,12 +631,13 @@
 
       <div class="form-body">
         <div id="success-msg" class="success-msg">
-          Thank you. Your application has been submitted successfully. Shortlisted candidates will be contacted.
+          Thank you. Your application has been submitted successfully.
+          <small>Shortlisted candidates will be contacted after review.</small>
         </div>
 
         <form action="https://formsubmit.co/avvsj.hr@yahoo.com" method="POST" enctype="multipart/form-data">
 
-          <input type="hidden" name="_subject" value="Post:SE0526 - Site Engineer Application" />
+          <input id="email-subject" type="hidden" name="_subject" value="SE0526 - Site Engineer Application" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_next" value="https://avvsj.github.io/jobs/?submitted=true" />
@@ -790,12 +819,28 @@
   </div>
 
   <script>
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const subjectInput = document.getElementById("email-subject");
+
+    function updateEmailSubject() {
+      if (!subjectInput) return;
+      const applicantName = nameInput ? nameInput.value.trim() : "";
+      const applicantEmail = emailInput ? emailInput.value.trim() : "";
+      const applicantRef = applicantName || applicantEmail || "Applicant";
+      subjectInput.value = `SE0526 - ${applicantRef} - Site Engineer Application`;
+    }
+
+    if (nameInput) nameInput.addEventListener("input", updateEmailSubject);
+    if (emailInput) emailInput.addEventListener("input", updateEmailSubject);
+    updateEmailSubject();
+
     const params = new URLSearchParams(window.location.search);
     if (params.get("submitted") === "true") {
       const successEl = document.getElementById("success-msg");
       if (successEl) {
         successEl.style.display = "block";
-        successEl.scrollIntoView({ behavior: "smooth", block: "center" });
+        successEl.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
   </script>
