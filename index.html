@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Freelance Site Engineer / Setting Out Engineer | UK Projects</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; }
+
+    body { background: #ffffff; color: #1f2933; line-height: 1.6; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; }
+
+    :root {
+      --primary: #f59e0b;
+      --dark: #1f2933;
+      --light: #f9fafb;
+      --border: #e5e7eb;
+    }
+
+    .hero {
+      background: var(--light);
+      padding: 40px 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      border-left: 6px solid var(--primary);
+    }
+
+    .hero h1 { font-size: 30px; margin-bottom: 10px; }
+    .hero p { color: #4b5563; }
+
+    .job-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 25px 0; }
+
+    .meta-card {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .meta-card strong { color: var(--primary); }
+
+    .content-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 25px; }
+
+    section, .apply-card {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 25px;
+    }
+
+    h2 { margin-bottom: 12px; }
+
+    ul { padding-left: 20px; }
+    li { margin-bottom: 6px; }
+
+    .apply-card { position: sticky; top: 20px; }
+
+    .apply-button {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      padding: 14px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    .apply-button:hover { background: #d97706; }
+
+    .form-section { margin-top: 35px; }
+
+    label { display: block; margin: 12px 0 4px; font-weight: bold; }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    .checkbox-group label { display: block; font-weight: normal; }
+
+    footer { text-align: center; padding: 20px; color: #6b7280; }
+
+    @media (max-width: 850px) {
+      .content-grid { grid-template-columns: 1fr; }
+      .apply-card { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header class="hero">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <img src="/mnt/data/Logo.jpeg" style="height:50px;" />
+        <strong>AVVSJ ENGINEERS LTD</strong>
+      </div>
+      <h1>Freelance Site Engineer / Setting Out Engineer</h1>
+      <p>We are currently supplying Site Engineers to active UK projects and are seeking experienced freelance engineers for immediate and upcoming assignments.</p>
+    </header>
+
+    <div class="job-meta">
+      <div class="meta-card"><strong>Location</strong>UK (Birmingham, London & Nationwide)</div>
+      <div class="meta-card"><strong>Job Type</strong>Freelance / Contract / Self-Employed</div>
+      <div class="meta-card"><strong>Rate</strong>Starting from GBP 200 per day</div>
+    </div>
+
+    <div class="content-grid">
+      <main>
+        <section>
+          <h2>Key Responsibilities</h2>
+          <ul>
+            <li>Setting out using Total Station, Dumpy Level and Laser</li>
+            <li>As-built surveys and QA checks</li>
+            <li>Review technical drawings</li>
+            <li>Maintain QA documentation</li>
+            <li>Ensure H&S compliance</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Requirements</h2>
+          <ul>
+            <li>Valid CSCS Card</li>
+            <li>SMSTS / SSSTS</li>
+            <li>First Aid (preferred)</li>
+            <li>UK experience as Site Engineer</li>
+            <li>Right to work in UK</li>
+            <li>Freelance / self-employed basis</li>
+          </ul>
+        </section>
+      </main>
+
+      <aside class="apply-card">
+        <h2>Apply</h2>
+        <a class="apply-button" href="#apply-form">Apply Now</a>
+      </aside>
+    </div>
+
+    <section id="apply-form" class="form-section">
+      <h2>Application & Pre-Screening</h2>
+
+      <form action="mailto:avvsj.hr@yahoo.com?subject=Post:SE0526 - Application" method="post" enctype="text/plain">
+
+        <label>Full Name *</label>
+        <input type="text" name="Name" required>
+
+        <label>Email *</label>
+        <input type="email" name="Email" required>
+
+        <label>Right to work in UK *</label>
+        <select name="Right to Work" required>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+
+        <label>Valid CSCS Card *</label>
+        <select name="CSCS" required>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+
+        <label>Freelance / Self-employed? *</label>
+        <select name="Freelance" required>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+
+        <label>UK Experience *</label>
+        <select name="Experience" required>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+
+        <label>Years of Experience</label>
+        <select name="Years">
+          <option>0-2</option>
+          <option>3-5</option>
+          <option>5+</option>
+        </select>
+
+        <label>Experience Areas</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="Area" value="RC Frame"> RC Frame</label>
+          <label><input type="checkbox" name="Area" value="Groundworks"> Groundworks</label>
+          <label><input type="checkbox" name="Area" value="Highways"> Highways</label>
+        </div>
+
+        <label>Availability</label>
+        <select name="Availability">
+          <option>Immediate</option>
+          <option>1-2 weeks</option>
+        </select>
+
+        <label>Expected Daily Rate (GBP) *</label>
+        <input type="text" name="Expected Daily Rate" placeholder="Example: GBP 250 per day" required>
+
+        <label>Upload CV *</label>
+        <input type="file" name="CV Upload" accept=".pdf,.doc,.docx" required>
+        <p style="font-size:13px;color:#6b7280;margin-top:5px;">
+          Accepted formats: PDF, DOC, DOCX.
+        </p>
+
+        <p style="margin-top:15px;font-size:14px;color:#4b5563;">
+        Please ensure all required information is completed. Shortlisted candidates will be contacted for current or upcoming project opportunities.
+        </p>
+        <button class="apply-button">Submit Application</button>
+
+      </form>
+    </section>
+
+    <footer>© AVVSJ ENGINEERS LTD</footer>
+
+  </div>
+</body>
+</html>
