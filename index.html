@@ -650,9 +650,10 @@
           <small>Shortlisted candidates will be contacted after review.</small>
         </div>
 
-        <form action="https://formsubmit.co/avvsj.hr@yahoo.com" method="POST" enctype="multipart/form-data">
+        <form id="application-form" action="https://formsubmit.co/avvsj.hr@yahoo.com" method="POST" enctype="multipart/form-data">
 
-          <input id="email-subject" type="hidden" name="_subject" value="SE0526 - Site Engineer Application" />
+          <input id="email-subject" type="hidden" name="_subject" value="SE0526 - Applicant - Site Engineer Application" />
+          <input type="hidden" name="Job Code" value="SE0526" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_next" value="https://avvsj.github.io/jobs/?submitted=true" />
@@ -838,20 +839,38 @@
   </div>
 
   <script>
+    const applicationForm = document.getElementById("application-form");
     const nameInput = document.getElementById("name");
     const emailInput = document.getElementById("email");
     const subjectInput = document.getElementById("email-subject");
 
     function updateEmailSubject() {
       if (!subjectInput) return;
+
       const applicantName = nameInput ? nameInput.value.trim() : "";
       const applicantEmail = emailInput ? emailInput.value.trim() : "";
-      const applicantRef = applicantName || applicantEmail || "Applicant";
+      let applicantRef = "Applicant";
+
+      if (applicantName && applicantEmail) {
+        applicantRef = `${applicantName} - ${applicantEmail}`;
+      } else if (applicantName) {
+        applicantRef = applicantName;
+      } else if (applicantEmail) {
+        applicantRef = applicantEmail;
+      }
+
       subjectInput.value = `SE0526 - ${applicantRef} - Site Engineer Application`;
     }
 
     if (nameInput) nameInput.addEventListener("input", updateEmailSubject);
     if (emailInput) emailInput.addEventListener("input", updateEmailSubject);
+
+    if (applicationForm) {
+      applicationForm.addEventListener("submit", function () {
+        updateEmailSubject();
+      });
+    }
+
     updateEmailSubject();
 
     const params = new URLSearchParams(window.location.search);
