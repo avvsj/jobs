@@ -96,7 +96,7 @@
 
     <header class="hero">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-        <img src="Logo.jpeg" style="height:50px;" />
+        <img src="/mnt/data/Logo.jpeg" style="height:50px;" />
         <strong>AVVSJ ENGINEERS LTD</strong>
       </div>
       <h1>Freelance Site Engineer / Setting Out Engineer</h1>
@@ -144,7 +144,16 @@
     <section id="apply-form" class="form-section">
       <h2>Application & Pre-Screening</h2>
 
-      <form action="mailto:avvsj.hr@yahoo.com?subject=Post:SE0526 - Application" method="post" enctype="text/plain">
+      <div id="success-msg" style="display:none;margin:0 0 15px;padding:12px;border-radius:8px;background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-size:14px;">
+        Thank you. Your application has been submitted successfully. Shortlisted candidates will be contacted for current or upcoming project opportunities.
+      </div>
+
+      <form action="https://formsubmit.co/avvsj.hr@yahoo.com" method="POST" enctype="multipart/form-data">
+
+        <input type="hidden" name="_subject" value="Post:SE0526 - Site Engineer Application" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value="https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY-NAME/?submitted=true" />
 
         <label>Full Name *</label>
         <input type="text" name="Name" required>
@@ -216,5 +225,15 @@
     <footer>© AVVSJ ENGINEERS LTD</footer>
 
   </div>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("submitted") === "true") {
+    const successEl = document.getElementById("success-msg");
+    if (successEl) {
+      successEl.style.display = "block";
+      successEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+</script>
 </body>
 </html>
