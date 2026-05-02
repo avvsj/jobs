@@ -6,89 +6,521 @@
   <title>Freelance Site Engineer / Setting Out Engineer | UK Projects</title>
 
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; }
-
-    body { background: #ffffff; color: #1f2933; line-height: 1.6; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; }
-
     :root {
-      --primary: #f59e0b;
-      --dark: #1f2933;
-      --light: #f9fafb;
-      --border: #e5e7eb;
+      --primary: #d89a2b;
+      --primary-dark: #b7791f;
+      --primary-soft: #fff3d8;
+      --primary-light: #fff8eb;
+
+      --grey-900: #525a61;
+      --grey-800: #646c74;
+      --grey-700: #7a828a;
+      --grey-600: #8f989f;
+      --grey-300: #d7dde2;
+      --grey-200: #e9edf0;
+      --grey-100: #f5f7f9;
+
+      --white: #ffffff;
+      --text: #4f5860;
+      --muted: #7b848c;
+      --border: #d8dee4;
+      --shadow: 0 14px 36px rgba(82, 90, 97, 0.10);
+
+      --section-a: linear-gradient(135deg, #ffffff 0%, #f8fafb 100%);
+      --section-b: linear-gradient(135deg, #ffffff 0%, #fff9ef 100%);
+      --section-c: linear-gradient(135deg, #ffffff 0%, #f3f6f8 100%);
+      --section-d: linear-gradient(135deg, #ffffff 0%, #fff6e8 100%);
+
+      --success-bg: #eefbf2;
+      --success-border: #b8e7c5;
+      --success-text: #276749;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(180deg, #ffffff 0%, #f5f7f9 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 30px 20px 40px;
     }
 
     .hero {
-      background: var(--light);
-      padding: 40px 30px;
-      border-radius: 12px;
-      margin-bottom: 30px;
-      border-left: 6px solid var(--primary);
+      background: linear-gradient(135deg, #ffffff 0%, #fff8eb 100%);
+      padding: 36px 32px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      border-left: 8px solid var(--primary);
+      box-shadow: var(--shadow);
     }
 
-    .hero h1 { font-size: 30px; margin-bottom: 10px; }
-    .hero p { color: #4b5563; }
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
 
-    .job-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 25px 0; }
+    .brand-row img {
+      width: 62px;
+      height: 62px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: var(--white);
+      border: 1px solid var(--grey-200);
+      padding: 4px;
+    }
+
+    .brand-name {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--grey-900);
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15;
+      margin-bottom: 12px;
+      color: var(--grey-900);
+    }
+
+    .hero p {
+      max-width: 860px;
+      font-size: 17px;
+      color: var(--grey-800);
+    }
+
+    .job-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 26px;
+    }
 
     .meta-card {
-      background: #ffffff;
-      padding: 16px;
-      border-radius: 10px;
+      background: var(--white);
+      padding: 18px;
+      border-radius: 16px;
       border: 1px solid var(--border);
+      box-shadow: 0 8px 22px rgba(82, 90, 97, 0.06);
     }
 
-    .meta-card strong { color: var(--primary); }
-
-    .content-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 25px; }
-
-    section, .apply-card {
-      background: #ffffff;
-      padding: 25px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      margin-bottom: 25px;
+    .meta-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--primary-dark);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
 
-    h2 { margin-bottom: 12px; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+      gap: 24px;
+      align-items: start;
+    }
 
-    ul { padding-left: 20px; }
-    li { margin-bottom: 6px; }
+    .info-section,
+    .apply-card,
+    .form-section {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 24px rgba(82, 90, 97, 0.06);
+      margin-bottom: 24px;
+    }
 
-    .apply-card { position: sticky; top: 20px; }
+    .info-section {
+      padding: 26px;
+      background: var(--section-a);
+    }
 
-    .apply-button {
+    .info-section + .info-section {
+      background: var(--section-b);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #fff8eb 0%, var(--primary-soft) 100%);
+      border: 1px solid #f1d9ad;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.85);
+    }
+
+    .section-title span {
+      width: 9px;
+      height: 30px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+      flex-shrink: 0;
+    }
+
+    h2 {
+      font-size: 22px;
+      color: var(--grey-900);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .apply-card {
+      position: sticky;
+      top: 20px;
+      background: linear-gradient(160deg, #ffffff 0%, #f8fafb 55%, #fff8ec 100%);
+      padding: 26px;
+      border-top: 5px solid var(--primary);
+    }
+
+    .apply-card h2 {
+      margin-bottom: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #fff8eb 0%, var(--primary-soft) 100%);
+      border: 1px solid #f1d9ad;
+      font-size: 20px;
+    }
+
+    .apply-card p {
+      margin-bottom: 18px;
+      color: var(--muted);
+    }
+
+    .apply-button,
+    .submit-button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       width: 100%;
-      background: var(--primary);
-      color: white;
-      padding: 14px;
-      border-radius: 8px;
-      text-align: center;
-      font-weight: bold;
+      padding: 14px 18px;
       border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
       cursor: pointer;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 10px 20px rgba(184, 121, 31, 0.18);
     }
 
-    .apply-button:hover { background: #d97706; }
+    .apply-button:hover,
+    .submit-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(184, 121, 31, 0.22);
+    }
 
-    .form-section { margin-top: 35px; }
+    .form-section {
+      overflow: hidden;
+      background: var(--white);
+    }
 
-    label { display: block; margin: 12px 0 4px; font-weight: bold; }
+    .form-header {
+      padding: 28px 30px;
+      background: linear-gradient(135deg, var(--grey-900) 0%, var(--grey-800) 100%);
+      color: var(--white);
+    }
 
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
+    .form-header h2 {
+      display: inline-block;
+      color: var(--grey-900);
+      margin-bottom: 10px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #fff8eb 0%, var(--primary-soft) 100%);
+      border: 1px solid #f1d9ad;
+    }
+
+    .form-header p {
+      color: #e6eaee;
+      max-width: 760px;
+    }
+
+    .form-body {
+      padding: 30px;
+      background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+    }
+
+    .success-msg {
+      display: none;
+      margin-bottom: 18px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+      color: var(--success-text);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    fieldset {
       border: 1px solid var(--border);
-      border-radius: 6px;
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 24px;
+      background: var(--section-c);
     }
 
-    .checkbox-group label { display: block; font-weight: normal; }
+    fieldset:nth-of-type(2) { background: var(--section-d); }
+    fieldset:nth-of-type(3) { background: var(--section-a); }
+    fieldset:nth-of-type(4) { background: var(--section-b); }
+    fieldset:nth-of-type(5) { background: var(--section-c); }
 
-    footer { text-align: center; padding: 20px; color: #6b7280; }
+    legend {
+      padding: 9px 16px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--grey-900);
+      background: linear-gradient(135deg, #fff8eb 0%, var(--primary-soft) 100%);
+      border: 1px solid #f1d9ad;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(184, 121, 31, 0.08);
+    }
 
-    @media (max-width: 850px) {
-      .content-grid { grid-template-columns: 1fr; }
-      .apply-card { position: static; }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 22px;
+      margin-top: 10px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-group.mcq {
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--grey-200);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--grey-900);
+    }
+
+    .form-group > label {
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .form-group.mcq > label {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--white);
+      color: var(--text);
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(216, 154, 43, 0.18);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .help-text {
+      margin-top: 5px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .option-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .option-card {
+      position: relative;
+      min-width: 110px;
+    }
+
+    .option-card input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .option-card span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      min-width: 112px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1.5px solid #c7cfd6;
+      background: linear-gradient(180deg, #ffffff 0%, #eef2f5 100%);
+      color: var(--grey-800);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow:
+        0 4px 10px rgba(82, 90, 97, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      white-space: nowrap;
+    }
+
+    .option-card span:hover {
+      border-color: var(--primary);
+      background: linear-gradient(180deg, #fffdf8 0%, #ffe8bd 100%);
+      color: var(--grey-900);
+      box-shadow:
+        0 7px 16px rgba(184, 121, 31, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      transform: translateY(-1px);
+    }
+
+    .option-card input:checked + span {
+      background: linear-gradient(180deg, #e0a33a 0%, var(--primary-dark) 100%);
+      border-color: #9a6418;
+      color: var(--white);
+      box-shadow:
+        0 8px 18px rgba(184, 121, 31, 0.30),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .option-card input:focus-visible + span {
+      outline: 3px solid rgba(216, 154, 43, 0.35);
+      outline-offset: 3px;
+    }
+
+    .declaration-box {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #f8fafb;
+      margin-bottom: 20px;
+    }
+
+    .declaration-box input {
+      width: auto;
+      margin-top: 4px;
+    }
+
+    .declaration-box label {
+      margin: 0;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px 10px 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .job-meta,
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .apply-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        padding: 18px 14px 28px;
+      }
+
+      .hero,
+      .info-section,
+      .apply-card {
+        padding: 22px;
+      }
+
+      .form-header,
+      .form-body {
+        padding: 22px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full-width {
+        grid-column: auto;
+      }
+
+      .form-group.mcq {
+        padding: 12px;
+      }
+
+      .option-group {
+        gap: 8px;
+      }
+
+      .option-card,
+      .option-card span {
+        width: 100%;
+      }
+
+      fieldset {
+        padding: 18px;
+      }
     }
   </style>
 </head>
@@ -97,128 +529,275 @@
   <div class="container">
 
     <header class="hero">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-        <img src="Logo.jpeg" style="height:50px;" />
-        <strong>AVVSJ ENGINEERS LTD</strong>
+      <div class="brand-row">
+        <img src="Logo.jpeg" alt="AVVSJ Engineers Ltd Logo" />
+        <div class="brand-name">AVVSJ Engineers Ltd</div>
       </div>
       <h1>Freelance Site Engineer / Setting Out Engineer</h1>
-      <p>We are currently supplying Site Engineers to active UK projects and are seeking experienced freelance engineers for immediate and upcoming assignments.</p>
+      <p>
+        We are currently supplying Site Engineers to active UK projects and are seeking experienced freelance engineers for immediate and upcoming assignments.
+      </p>
     </header>
 
     <div class="job-meta">
-      <div class="meta-card"><strong>Location</strong>UK (Birmingham, London & Nationwide)</div>
-      <div class="meta-card"><strong>Job Type</strong>Freelance / Contract / Self-Employed</div>
-      <div class="meta-card"><strong>Rate</strong>Starting from GBP 200 per day</div>
+      <div class="meta-card">
+        <strong>Location</strong>
+        UK (Birmingham, London & Nationwide)
+      </div>
+      <div class="meta-card">
+        <strong>Job Type</strong>
+        Freelance / Contract / Self-Employed
+      </div>
+      <div class="meta-card">
+        <strong>Rate</strong>
+        Starting from GBP 200 per day
+      </div>
     </div>
 
     <div class="content-grid">
       <main>
-        <section>
-          <h2>Key Responsibilities</h2>
+        <section class="info-section">
+          <div class="section-title">
+            <span></span>
+            <h2>Key Responsibilities</h2>
+          </div>
           <ul>
-            <li>Setting out using Total Station, Dumpy Level and Laser</li>
-            <li>As-built surveys and QA checks</li>
-            <li>Review technical drawings</li>
-            <li>Maintain QA documentation</li>
-            <li>Ensure H&S compliance</li>
+            <li>Setting out using Total Station, Dumpy Level and Laser.</li>
+            <li>Carry out as-built surveys and QA checks.</li>
+            <li>Review technical drawings and site information.</li>
+            <li>Maintain QA records and site documentation.</li>
+            <li>Support site health & safety compliance.</li>
           </ul>
         </section>
 
-        <section>
-          <h2>Requirements</h2>
+        <section class="info-section">
+          <div class="section-title">
+            <span></span>
+            <h2>Requirements</h2>
+          </div>
           <ul>
-            <li>Valid CSCS Card</li>
-            <li>SMSTS / SSSTS</li>
-            <li>First Aid (preferred)</li>
-            <li>UK experience as Site Engineer</li>
-            <li>Right to work in UK</li>
-            <li>Freelance / self-employed basis</li>
+            <li>Valid CSCS Card.</li>
+            <li>SMSTS / SSSTS preferred.</li>
+            <li>First Aid preferred.</li>
+            <li>UK experience as Site Engineer / Setting Out Engineer.</li>
+            <li>Right to work in the UK.</li>
+            <li>Available on freelance / self-employed basis.</li>
           </ul>
         </section>
       </main>
 
       <aside class="apply-card">
-        <h2>Apply</h2>
+        <h2>Apply for Site Engineering Work</h2>
+        <p>
+          Submit your details and CV. Suitable candidates will be reviewed and contacted for current or upcoming opportunities.
+        </p>
         <a class="apply-button" href="#apply-form">Apply Now</a>
       </aside>
     </div>
 
     <section id="apply-form" class="form-section">
-      <h2>Application & Pre-Screening</h2>
-
-      <div id="success-msg" style="display:none;margin:0 0 15px;padding:12px;border-radius:8px;background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-size:14px;">
-        Thank you. Your application has been submitted successfully. Shortlisted candidates will be contacted.
+      <div class="form-header">
+        <h2>Application & Pre-Screening Form</h2>
+        <p>Please complete the required information below. The form is arranged into sections for better clarity and faster review.</p>
       </div>
 
-      <form action="https://formsubmit.co/avvsj.hr@yahoo.com" method="POST" enctype="multipart/form-data">
+      <div class="form-body">
+        <div id="success-msg" class="success-msg">
+          Thank you. Your application has been submitted successfully. Shortlisted candidates will be contacted.
+        </div>
 
-        <input type="hidden" name="_subject" value="Post:SE0526 - {Name} - Site Engineer Application" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_next" value="https://avvsj.github.io/jobs/?submitted=true" />
+        <form action="https://formsubmit.co/avvsj.hr@yahoo.com" method="POST" enctype="multipart/form-data">
 
-        <label>Full Name *</label>
-        <input type="text" name="Name" required>
+          <input type="hidden" name="_subject" value="Post:SE0526 - Site Engineer Application" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://avvsj.github.io/jobs/?submitted=true" />
 
-        <label>Email *</label>
-        <input type="email" name="Email" required>
+          <fieldset>
+            <legend>Personal Information</legend>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input id="name" type="text" name="Name" required />
+              </div>
 
-        <label>Right to work in UK *</label>
-        <select name="Right to Work" required>
-          <option>Yes</option>
-          <option>No</option>
-        </select>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input id="email" type="email" name="Email" required />
+              </div>
 
-        <label>Valid CSCS Card *</label>
-        <select name="CSCS" required>
-          <option>Yes</option>
-          <option>No</option>
-        </select>
+              <div class="form-group">
+                <label for="phone">Mobile Number</label>
+                <input id="phone" type="tel" name="Mobile Number" />
+              </div>
 
-        <label>Freelance / Self-employed? *</label>
-        <select name="Freelance" required>
-          <option>Yes</option>
-          <option>No</option>
-        </select>
+              <div class="form-group">
+                <label for="location">Current Location</label>
+                <input id="location" type="text" name="Current Location" placeholder="e.g. Birmingham, London, Manchester" />
+              </div>
+            </div>
+          </fieldset>
 
-        <label>UK Experience *</label>
-        <select name="Experience" required>
-          <option>Yes</option>
-          <option>No</option>
-        </select>
+          <fieldset>
+            <legend>Eligibility & Availability</legend>
+            <div class="form-grid">
+              <div class="form-group mcq">
+                <label>Right to Work in the UK *</label>
+                <div class="option-group">
+                  <label class="option-card"><input type="radio" name="Right to Work" value="Yes" required><span>Yes</span></label>
+                  <label class="option-card"><input type="radio" name="Right to Work" value="No"><span>No</span></label>
+                </div>
+              </div>
 
-        <label>Years of Experience</label>
-        <select name="Years">
-          <option>0-2</option>
-          <option>3-5</option>
-          <option>5+</option>
-        </select>
+              <div class="form-group mcq">
+                <label>Freelance / Self-Employed? *</label>
+                <div class="option-group">
+                  <label class="option-card"><input type="radio" name="Freelance or Self-Employed" value="Yes" required><span>Yes</span></label>
+                  <label class="option-card"><input type="radio" name="Freelance or Self-Employed" value="No"><span>No</span></label>
+                </div>
+              </div>
 
-        <label>Expected Daily Rate (GBP) *</label>
-        <input type="text" name="Expected Daily Rate" required>
+              <div class="form-group mcq">
+                <label>Availability *</label>
+                <div class="option-group">
+                  <label class="option-card"><input type="radio" name="Availability" value="Immediate" required><span>Immediate</span></label>
+                  <label class="option-card"><input type="radio" name="Availability" value="Within 1 week"><span>1 week</span></label>
+                  <label class="option-card"><input type="radio" name="Availability" value="Within 2 weeks"><span>2 weeks</span></label>
+                  <label class="option-card"><input type="radio" name="Availability" value="More than 2 weeks"><span>2+ weeks</span></label>
+                </div>
+              </div>
 
-        <label>Upload CV *</label>
-        <input type="file" name="CV Upload" accept=".pdf,.doc,.docx" required>
+              <div class="form-group mcq">
+                <label>Willing to Travel Nationwide?</label>
+                <div class="option-group">
+                  <label class="option-card"><input type="radio" name="Willing to Travel Nationwide" value="Yes"><span>Yes</span></label>
+                  <label class="option-card"><input type="radio" name="Willing to Travel Nationwide" value="No"><span>No</span></label>
+                  <label class="option-card"><input type="radio" name="Willing to Travel Nationwide" value="Depends on location/rate"><span>Depends</span></label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
 
-        <button class="apply-button">Submit Application</button>
+          <fieldset>
+            <legend>Experience & Skills</legend>
+            <div class="form-grid">
+              <div class="form-group mcq">
+                <label>UK Site Engineering Experience *</label>
+                <div class="option-group">
+                  <label class="option-card"><input type="radio" name="UK Experience" value="Yes" required><span>Yes</span></label>
+                  <label class="option-card"><input type="radio" name="UK Experience" value="No"><span>No</span></label>
+                </div>
+              </div>
 
-      </form>
+              <div class="form-group mcq">
+                <label>Years of Experience *</label>
+                <div class="option-group">
+                  <label class="option-card"><input type="radio" name="Years of Experience" value="0-2" required><span>0–2 years</span></label>
+                  <label class="option-card"><input type="radio" name="Years of Experience" value="3-5"><span>3–5 years</span></label>
+                  <label class="option-card"><input type="radio" name="Years of Experience" value="5+"><span>5+ years</span></label>
+                </div>
+              </div>
+
+              <div class="form-group mcq">
+                <label>Setting Out Experience *</label>
+                <div class="option-group">
+                  <label class="option-card"><input type="radio" name="Setting Out Experience" value="Yes" required><span>Yes</span></label>
+                  <label class="option-card"><input type="radio" name="Setting Out Experience" value="No"><span>No</span></label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="equipment">Equipment Experience</label>
+                <input id="equipment" type="text" name="Equipment Experience" placeholder="e.g. Leica, Trimble, Total Station, GPS" />
+              </div>
+
+              <div class="form-group full-width">
+                <label for="project-types">Project Types Worked On</label>
+                <textarea id="project-types" name="Project Types Worked On" placeholder="e.g. highways, drainage, groundworks, residential, commercial"></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Certificates & Documents</legend>
+            <div class="form-grid">
+              <div class="form-group mcq">
+                <label>Valid CSCS Card *</label>
+                <div class="option-group">
+                  <label class="option-card"><input type="radio" name="CSCS" value="Yes" required><span>Yes</span></label>
+                  <label class="option-card"><input type="radio" name="CSCS" value="No"><span>No</span></label>
+                </div>
+              </div>
+
+              <div class="form-group mcq">
+                <label>SMSTS / SSSTS</label>
+                <div class="option-group">
+                  <label class="option-card"><input type="radio" name="SMSTS or SSSTS" value="SMSTS"><span>SMSTS</span></label>
+                  <label class="option-card"><input type="radio" name="SMSTS or SSSTS" value="SSSTS"><span>SSSTS</span></label>
+                  <label class="option-card"><input type="radio" name="SMSTS or SSSTS" value="None"><span>None</span></label>
+                </div>
+              </div>
+
+              <div class="form-group mcq">
+                <label>First Aid Certificate</label>
+                <div class="option-group">
+                  <label class="option-card"><input type="radio" name="First Aid Certificate" value="Yes"><span>Yes</span></label>
+                  <label class="option-card"><input type="radio" name="First Aid Certificate" value="No"><span>No</span></label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="cv">Upload CV *</label>
+                <input id="cv" type="file" name="CV Upload" accept=".pdf,.doc,.docx" required />
+                <div class="help-text">Accepted formats: PDF, DOC, DOCX</div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Rate & Additional Details</legend>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="daily-rate">Expected Daily Rate (GBP) *</label>
+                <input id="daily-rate" type="text" name="Expected Daily Rate" placeholder="e.g. 220" required />
+              </div>
+
+              <div class="form-group">
+                <label for="preferred-location">Preferred Work Location</label>
+                <input id="preferred-location" type="text" name="Preferred Work Location" placeholder="e.g. Midlands, London, Nationwide" />
+              </div>
+
+              <div class="form-group full-width">
+                <label for="notes">Additional Notes</label>
+                <textarea id="notes" name="Additional Notes" placeholder="Add any notice period, specialist skills, or project preferences."></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="declaration-box">
+            <input id="declaration" type="checkbox" name="Declaration" value="Confirmed" required />
+            <label for="declaration">
+              I confirm that the information provided is accurate and I agree to be contacted by AVVSJ Engineers Ltd regarding suitable freelance or contract opportunities.
+            </label>
+          </div>
+
+          <button type="submit" class="submit-button">Submit Application</button>
+        </form>
+      </div>
     </section>
 
     <footer>© AVVSJ ENGINEERS LTD</footer>
-
   </div>
 
-<script>
-  const params = new URLSearchParams(window.location.search);
-  if (params.get("submitted") === "true") {
-    const successEl = document.getElementById("success-msg");
-    if (successEl) {
-      successEl.style.display = "block";
-      successEl.scrollIntoView({ behavior: "smooth", block: "center" });
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("submitted") === "true") {
+      const successEl = document.getElementById("success-msg");
+      if (successEl) {
+        successEl.style.display = "block";
+        successEl.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
     }
-  }
-</script>
-
+  </script>
 </body>
 </html>
